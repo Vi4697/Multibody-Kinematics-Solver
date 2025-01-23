@@ -13,48 +13,46 @@ A = [2.9; -1.9];     % Used in revolute joints 4-3 and 1-3
 K = [3.4; -1.9];     % Not directly used but represents an endpoint in the mechanism
 
 
-% Local Vectors for Revolute Joints
+% Revolute joint calculations (used in constraint equations and Jacobian matrix)
+sA01 = O;            % Local coordinates for joint 0-1 (fixed at O)
+                     % Used in revolute constraint for joint 0-1.
 
-% 0-1: Fixed revolute joint at O and D (Body 1)
-sA01 = [0; 0];         % Local position of O in Body 1
-sB01 = O;          % Local position of D relative to O (global origin)
+sB01 = O - D;        % Relative position of D with respect to O
+                     % Used in revolute constraint for joint 0-1.
 
-% 1-3: Revolute joint connecting D (Body 1) and A (Body 3)
-sA13 = A - O;          % Local position of A in Body 1
-sB13 = [0; 0];         % Local position of A in Body 3 (reference point)
+sA07 = H;            % Local coordinates for joint 0-7
+                     
 
-% 3-4: Revolute joint connecting A (Body 3) and B (Body 4)
-sA34 = B - A;          % Local position of B in Body 3
-sB34 = [0; 0];         % Local position of B in Body 4 (reference point)
+sB07 = O - O;        % Relative position of H (aligned with O)
 
-% 4-2: Revolute joint connecting B (Body 4) and C (Body 2)
-sA42 = C - B;          % Local position of C in Body 4
-sB42 = [0; 0];         % Local position of C in Body 2 (reference point)
+sA05 = N;            % Local coordinates for joint 0-5
 
-% 2-8: Revolute joint connecting C (Body 2) and G (Body 8)
-sA28 = G - C;          % Local position of G in Body 2
-sB28 = [0; 0];         % Local position of G in Body 8 (reference point)
+sB05 = O - O;        % Relative position of N (aligned with O)
 
-% 2-1: Revolute joint connecting C (Body 2) and D (Body 1)
-sA21 = D - C;          % Local position of D in Body 2
-sB21 = C - D;          % Local position of C in Body 1
+sA82 = [0; 0];       % Local coordinates for joint 8-2
 
-% 0-7: Fixed revolute joint at O and H (Body 7)
-sA07 = [0; 0];         % Local position of O in Body 7
-sB07 = H - O;          % Local position of H relative to O (global origin)
+sB82 = G - C;        % Relative position of C with respect to G
 
-% 0-5: Fixed revolute joint at O and N (Body 5)
-sA05 = [0; 0];         % Local position of O in Body 5
-sB05 = N - O;          % Local position of N relative to O (global origin)
+sA61 = [0; 0];       % Local coordinates for joint 6-1
 
-% 6-1: Revolute joint connecting M (Body 6) and D (Body 1)
-sA61 = D - M;          % Local position of D in Body 6
-sB61 = [0; 0];         % Local position of M in Body 1 (reference point)
+sB61 = M - D;        % Relative position of D with respect to M
 
-% Local Vectors for Translational Joints (if any)
-% No specific local vectors are required for translational joints as they depend on motion direction and reference points.
+sA12 = [0; 0];       % Local coordinates for joint 1-2
 
+sB12 = D - C;        % Relative position of C with respect to D
 
+sA24 = [0; 0];       % Local coordinates for joint 2-4
+
+sB24 = C - B;        % Relative position of B with respect to C
+
+sA43 = [0; 0];       % Local coordinates for joint 4-3
+
+sB43 = B - A;        % Relative position of A with respect to B
+
+sA13 = A - D;        % Local coordinates for joint 1-3
+
+sB13 = [0; 0];       % Relative position of A with respect to D
+                    
 
 
 % Translational joints (used in constraint equations for translational joints and Jacobian matrix)

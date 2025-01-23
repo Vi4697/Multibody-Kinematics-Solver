@@ -41,56 +41,53 @@ function Fq = Jacobian(q)
     % These correspond to revolute joints, translational joints, and driving constraints.
 
     % Revolute joints (two constraints per joint)
-    % Revolute joints (two constraints per joint)
-    
     % Joint O-D (Frame 0, Frame 1)
-    Fq(1:2, 1:2) = -eye(2);             % Partial derivatives for Body 1 (D)
-    Fq(1:2, 3) = -Om * Rot1 * sB01;     % Partial derivatives w.r.t. Body 1 rotation (phi1)
-    
-    % Joint D-A (Frame 1, Frame 3)
-    Fq(3:4, 1:2) = eye(2);              % Partial derivatives for Body 1 (D)
-    Fq(3:4, 3) = Om * Rot1 * sA13;      % Partial derivatives w.r.t. Body 1 rotation (phi1)
-    Fq(3:4, 7:8) = -eye(2);             % Partial derivatives for Body 3 (A)
-    Fq(3:4, 9) = -Om * Rot3 * sB13;     % Partial derivatives w.r.t. Body 3 rotation (phi3)
-    
-    % Joint A-B (Frame 3, Frame 4)
-    Fq(5:6, 7:8) = eye(2);              % Partial derivatives for Body 3 (A)
-    Fq(5:6, 9) = Om * Rot3 * sA34;      % Partial derivatives w.r.t. Body 3 rotation (phi3)
-    Fq(5:6, 10:11) = -eye(2);           % Partial derivatives for Body 4 (B)
-    Fq(5:6, 12) = -Om * Rot4 * sB34;    % Partial derivatives w.r.t. Body 4 rotation (phi4)
-    
-    % Joint B-C (Frame 4, Frame 2)
-    Fq(7:8, 10:11) = eye(2);            % Partial derivatives for Body 4 (B)
-    Fq(7:8, 12) = Om * Rot4 * sA42;     % Partial derivatives w.r.t. Body 4 rotation (phi4)
-    Fq(7:8, 4:5) = -eye(2);             % Partial derivatives for Body 2 (C)
-    Fq(7:8, 6) = -Om * Rot2 * sB42;     % Partial derivatives w.r.t. Body 2 rotation (phi2)
-    
-    % Joint C-G (Frame 2, Frame 8)
-    Fq(9:10, 4:5) = eye(2);             % Partial derivatives for Body 2 (C)
-    Fq(9:10, 6) = Om * Rot2 * sA28;     % Partial derivatives w.r.t. Body 2 rotation (phi2)
-    Fq(9:10, 22:23) = -eye(2);          % Partial derivatives for Body 8 (G)
-    Fq(9:10, 24) = -Om * Rot8 * sB28;   % Partial derivatives w.r.t. Body 8 rotation (phi8)
-    
-    % Joint C-D (Frame 2, Frame 1)
-    Fq(11:12, 4:5) = eye(2);            % Partial derivatives for Body 2 (C)
-    Fq(11:12, 6) = Om * Rot2 * sA21;    % Partial derivatives w.r.t. Body 2 rotation (phi2)
-    Fq(11:12, 1:2) = -eye(2);           % Partial derivatives for Body 1 (D)
-    Fq(11:12, 3) = -Om * Rot1 * sB21;   % Partial derivatives w.r.t. Body 1 rotation (phi1)
-    
-    % Joint O-H (Frame 0, Frame 7)
-    Fq(13:14, 19:20) = -eye(2);         % Partial derivatives for Body 7 (H)
-    Fq(13:14, 21) = -Om * Rot7 * sB07;  % Partial derivatives w.r.t. Body 7 rotation (phi7)
-    
-    % Joint O-N (Frame 0, Frame 5)
-    Fq(15:16, 13:14) = -eye(2);         % Partial derivatives for Body 5 (N)
-    Fq(15:16, 15) = -Om * Rot5 * sB05;  % Partial derivatives w.r.t. Body 5 rotation (phi5)
-    
-    % Joint M-D (Frame 6, Frame 1)
-    Fq(17:18, 16:17) = eye(2);          % Partial derivatives for Body 6 (M)
-    Fq(17:18, 18) = Om * Rot6 * sA61;   % Partial derivatives w.r.t. Body 6 rotation (phi6)
-    Fq(17:18, 1:2) = -eye(2);           % Partial derivatives for Body 1 (D)
-    Fq(17:18, 3) = -Om * Rot1 * sB61;   % Partial derivatives w.r.t. Body 1 rotation (phi1)
+    Fq(1:2, 1:2) = -eye(2);
+    Fq(1:2, 3) = -Om * Rot1 * sB01;
 
+    % Joint O-H (Frame 0, Frame 7)
+    Fq(3:4, 19:20) = -eye(2);
+    Fq(3:4, 21) = -Om * Rot7 * sB07;
+
+    % Joint O-N (Frame 0, Frame 5)
+    Fq(5:6, 13:14) = -eye(2);
+    Fq(5:6, 15) = -Om * Rot5 * sB05;
+
+    % Joint G-C (Frame 8, Frame 2)
+    Fq(7:8, 22:23) = eye(2);
+    Fq(7:8, 24) = Om * Rot8 * sA82;
+    Fq(7:8, 4:5) = -eye(2);
+    Fq(7:8, 6) = -Om * Rot2 * sB82;
+
+    % Joint M-D (Frame 6, Frame 1)
+    Fq(9:10, 16:17) = eye(2);
+    Fq(9:10, 18) = Om * Rot6 * sA61;
+    Fq(9:10, 1:2) = -eye(2);
+    Fq(9:10, 3) = -Om * Rot1 * sB61;
+
+    % Joint D-C (Frame 1, Frame 2)
+    Fq(11:12, 1:2) = eye(2);
+    Fq(11:12, 3) = Om * Rot1 * sA12;
+    Fq(11:12, 4:5) = -eye(2);
+    Fq(11:12, 6) = -Om * Rot2 * sB12;
+
+    % Joint C-B (Frame 2, Frame 4)
+    Fq(13:14, 4:5) = eye(2);
+    Fq(13:14, 6) = Om * Rot4 * sA24;
+    Fq(13:14, 10:11) = -eye(2);
+    Fq(13:14, 12) = -Om * Rot2 * sB24;
+
+    % Joint B-A (Frame 4, Frame 3)
+    Fq(15:16, 10:11) = eye(2);
+    Fq(15:16, 12) = Om * Rot4 * sA43;
+    Fq(15:16, 7:8) = -eye(2);
+    Fq(15:16, 9) = -Om * Rot3 * sB43;
+
+    % Joint D-A (Frame 1, Frame 3)
+    Fq(17:18, 1:2) = eye(2);
+    Fq(17:18, 3) = Om * Rot1 * sA13;
+    Fq(17:18, 7:8) = -eye(2);
+    Fq(17:18, 9) = -Om * Rot3 * sB13;
 
     % Translational joints (two constraints per joint)
     % Joint 5-6

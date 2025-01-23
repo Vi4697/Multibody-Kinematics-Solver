@@ -1,0 +1,1345 @@
+! CMD Version:2
+! Version 2 enables expanded acceptable characters for object names.
+! If unspecified, set to 1 or set to an invalid value, Adams View assumes traditional naming requirements.
+!
+!-------------------------- Default Units for Model ---------------------------!
+!
+!
+defaults units  &
+   length = meter  &
+   angle = deg  &
+   force = newton  &
+   mass = kg  &
+   time = sec
+!
+defaults units  &
+   coordinate_system_type = cartesian  &
+   orientation_type = body313
+!
+!------------------------ Default Attributes for Model ------------------------!
+!
+!
+defaults attributes  &
+   inheritance = bottom_up  &
+   icon_visibility = on  &
+   grid_visibility = off  &
+   size_of_icons = 5.0E-02  &
+   spacing_for_grid = 1.0
+!
+!------------------------------ Adams View Model ------------------------------!
+!
+!
+model create  &
+   model_name = Zv_Problem_6
+!
+view erase
+!
+!--------------------------------- Materials ----------------------------------!
+!
+!
+material create  &
+   material_name = .Zv_Problem_6.steel  &
+   adams_id = 1  &
+   density = 7801.0  &
+   youngs_modulus = 2.07E+11  &
+   poissons_ratio = 0.29
+!
+!-------------------------------- Rigid Parts ---------------------------------!
+!
+! Create parts and their dependent markers and graphics
+!
+!----------------------------------- ground -----------------------------------!
+!
+!
+! ****** Ground Part ******
+!
+defaults model  &
+   part_name = ground
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.O  &
+   adams_id = 1  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_2  &
+   adams_id = 2  &
+   location = -0.3, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_3  &
+   adams_id = 3  &
+   location = -0.3, -0.8, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_4  &
+   adams_id = 4  &
+   location = 0.1, -0.8, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_5  &
+   adams_id = 5  &
+   location = 0.4, -0.2, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_23  &
+   adams_id = 23  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_25  &
+   adams_id = 25  &
+   location = 0.4, -0.2, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_27  &
+   adams_id = 27  &
+   location = 0.1, -0.8, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_52  &
+   adams_id = 52  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.ground.MARKER_53  &
+   adams_id = 53  &
+   location = 2.9, -1.1, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.ground  &
+   material_type = .Zv_Problem_6.steel
+!
+! ****** Points for current part ******
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_1  &
+   location = 0.0, 0.0, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_2  &
+   location = -0.3, 0.0, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_3  &
+   location = 0.1, -0.8, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_4  &
+   location = -0.3, -0.8, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_5  &
+   location = 0.4, -0.2, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_7  &
+   location = 2.2, -0.4, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_8  &
+   location = 1.9, -1.4, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_9  &
+   location = 2.9, -1.9, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_11  &
+   location = 1.6, 0.4, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_12  &
+   location = 2.5, -1.4, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_14  &
+   location = 2.9, -1.1, 0.0
+!
+point create  &
+   point_name = .Zv_Problem_6.ground.POINT_16  &
+   location = 3.4, -1.9, 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape plate  &
+   plate_name = .Zv_Problem_6.ground.PLATE_OHN  &
+   marker_name = .Zv_Problem_6.ground.O, .Zv_Problem_6.ground.MARKER_2,  &
+                 .Zv_Problem_6.ground.MARKER_3,  &
+                 .Zv_Problem_6.ground.MARKER_4, .Zv_Problem_6.ground.MARKER_5  &
+   width = 5.0E-02  &
+   radius = 2.0E-02
+!
+part attributes  &
+   part_name = .Zv_Problem_6.ground  &
+   name_visibility = off
+!
+!---------------------------------- PLA_ODAM ----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.PLA_ODAM  &
+   adams_id = 2  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.PLA_ODAM
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_6  &
+   adams_id = 6  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_7  &
+   adams_id = 7  &
+   location = 2.2, -0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_8  &
+   adams_id = 8  &
+   location = 2.9, -1.9, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_9  &
+   adams_id = 9  &
+   location = 1.9, -1.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.cm  &
+   adams_id = 44  &
+   location = 1.65, -0.85, 0.0  &
+   orientation = 237.9914935203d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.O  &
+   adams_id = 22  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.M  &
+   adams_id = 30  &
+   location = 1.9, -1.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.D  &
+   adams_id = 32  &
+   location = 2.2, -0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.A  &
+   adams_id = 34  &
+   location = 2.9, -1.9, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.PLA_ODAM  &
+   mass = 734.7162244875  &
+   center_of_mass_marker = .Zv_Problem_6.PLA_ODAM.cm  &
+   ixx = 444.3436097138  &
+   iyy = 405.2516322601  &
+   izz = 39.3981092139  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape plate  &
+   plate_name = .Zv_Problem_6.PLA_ODAM.PLATE_ODAM  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_6,  &
+                 .Zv_Problem_6.PLA_ODAM.MARKER_7,  &
+                 .Zv_Problem_6.PLA_ODAM.MARKER_8,  &
+                 .Zv_Problem_6.PLA_ODAM.MARKER_9  &
+   width = 5.0E-02  &
+   radius = 2.0E-02
+!
+part attributes  &
+   part_name = .Zv_Problem_6.PLA_ODAM  &
+   color = RED  &
+   name_visibility = off
+!
+!---------------------------------- PLA_GDC -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.PLA_GDC  &
+   adams_id = 3  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.PLA_GDC
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_10  &
+   adams_id = 10  &
+   location = 1.6, 0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_11  &
+   adams_id = 11  &
+   location = 2.2, -0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_12  &
+   adams_id = 12  &
+   location = 2.5, -1.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.cm  &
+   adams_id = 45  &
+   location = 2.15, -0.5, 0.0  &
+   orientation = 206.4924513546d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.G  &
+   adams_id = 28  &
+   location = 1.6, 0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.D  &
+   adams_id = 33  &
+   location = 2.2, -0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_GDC.C  &
+   adams_id = 36  &
+   location = 2.5, -1.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.PLA_GDC  &
+   mass = 102.3438440566  &
+   center_of_mass_marker = .Zv_Problem_6.PLA_GDC.cm  &
+   ixx = 23.3055289115  &
+   iyy = 23.0574025456  &
+   izz = 0.2907696342  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape plate  &
+   plate_name = .Zv_Problem_6.PLA_GDC.PLATE_GDC  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_10,  &
+                 .Zv_Problem_6.PLA_GDC.MARKER_11,  &
+                 .Zv_Problem_6.PLA_GDC.MARKER_12  &
+   width = 5.0E-02  &
+   radius = 2.0E-02
+!
+part attributes  &
+   part_name = .Zv_Problem_6.PLA_GDC  &
+   color = GREEN  &
+   name_visibility = off
+!
+!----------------------------------- LIN_CB -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.LIN_CB  &
+   adams_id = 4  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.LIN_CB
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.LIN_CB.MARKER_13  &
+   adams_id = 13  &
+   location = 2.5, -1.4, 0.0  &
+   orientation = 36.8698976458d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.LIN_CB.Marker_B  &
+   adams_id = 14  &
+   location = 2.9, -1.1, 0.0  &
+   orientation = 36.8698976458d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.LIN_CB.cm  &
+   adams_id = 46  &
+   location = 2.7, -1.25, 0.0  &
+   orientation = 306.8698976458d, 90.0000000121d, 90.000000122d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.LIN_CB.C  &
+   adams_id = 37  &
+   location = 2.5, -1.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.LIN_CB.B  &
+   adams_id = 39  &
+   location = 2.9, -1.1, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.LIN_CB  &
+   mass = 5.2522877458  &
+   center_of_mass_marker = .Zv_Problem_6.LIN_CB.cm  &
+   ixx = 0.1282302802  &
+   iyy = 0.1274301883  &
+   izz = 1.3472052485E-03  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape link  &
+   link_name = .Zv_Problem_6.LIN_CB.LINK_CB  &
+   i_marker = .Zv_Problem_6.LIN_CB.MARKER_13  &
+   j_marker = .Zv_Problem_6.LIN_CB.Marker_B  &
+   width = 5.0E-02  &
+   depth = 2.5E-02
+!
+part attributes  &
+   part_name = .Zv_Problem_6.LIN_CB  &
+   color = CYAN  &
+   name_visibility = off
+!
+!---------------------------------- PLA_BKA -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.PLA_BKA  &
+   adams_id = 5  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.PLA_BKA
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_BKA.MARKER_15  &
+   adams_id = 15  &
+   location = 2.9, -1.1, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_BKA.K  &
+   adams_id = 16  &
+   location = 3.4, -1.9, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_BKA.MARKER_17  &
+   adams_id = 17  &
+   location = 2.9, -1.9, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_BKA.cm  &
+   adams_id = 47  &
+   location = 3.05, -1.6, 0.0  &
+   orientation = 202.9074445978d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_BKA.A  &
+   adams_id = 35  &
+   location = 2.9, -1.9, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PLA_BKA.B  &
+   adams_id = 38  &
+   location = 2.9, -1.1, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.PLA_BKA  &
+   mass = 96.0008999669  &
+   center_of_mass_marker = .Zv_Problem_6.PLA_BKA.cm  &
+   ixx = 5.7557629905  &
+   iyy = 4.6863753584  &
+   izz = 1.1093880071  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape plate  &
+   plate_name = .Zv_Problem_6.PLA_BKA.PLATE_BKA  &
+   marker_name = .Zv_Problem_6.PLA_BKA.MARKER_15, .Zv_Problem_6.PLA_BKA.K,  &
+                 .Zv_Problem_6.PLA_BKA.MARKER_17  &
+   width = 5.0E-02  &
+   radius = 2.0E-02
+!
+part attributes  &
+   part_name = .Zv_Problem_6.PLA_BKA  &
+   color = MAGENTA  &
+   name_visibility = off
+!
+!----------------------------------- CYL_HG -----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.CYL_HG  &
+   adams_id = 6  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.CYL_HG
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYL_HG.MARKER_18  &
+   adams_id = 18  &
+   location = 0.4, -0.2, 0.0  &
+   orientation = 116.5650511771d, 90.0d, 180.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYL_HG.cm  &
+   adams_id = 48  &
+   location = 0.7, -5.0E-02, 0.0  &
+   orientation = 116.5650511771d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYL_HG.H  &
+   adams_id = 24  &
+   location = 0.4, -0.2, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYL_HG.MARKER_43  &
+   adams_id = 43  &
+   location = 0.85, 2.5000000006E-02, 0.0  &
+   orientation = 116.5650511765d, 90.0d, 180.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.CYL_HG  &
+   mass = 390.1330331323  &
+   center_of_mass_marker = .Zv_Problem_6.CYL_HG.cm  &
+   ixx = 34.4604812965  &
+   iyy = 34.4604812965  &
+   izz = 3.0860132487  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .Zv_Problem_6.CYL_HG.CYLINDER_HG  &
+   adams_id = 18  &
+   center_marker = .Zv_Problem_6.CYL_HG.MARKER_18  &
+   angle_extent = 360.0  &
+   length = 1.0062305899  &
+   radius = 0.1257788237  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .Zv_Problem_6.CYL_HG  &
+   color = MAIZE  &
+   name_visibility = off
+!
+!--------------------------------- PISTON_HG ----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.PISTON_HG  &
+   adams_id = 7  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.PISTON_HG
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_HG.MARKER_19  &
+   adams_id = 19  &
+   location = 0.85, 2.5000000006E-02, 0.0  &
+   orientation = 116.5650511771d, 90.0d, 180.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_HG.cm  &
+   adams_id = 49  &
+   location = 1.3, 0.25, 0.0  &
+   orientation = 116.5650511771d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_HG.G  &
+   adams_id = 29  &
+   location = 1.6, 0.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_HG.MARKER_42  &
+   adams_id = 42  &
+   location = 0.85, 2.5000000006E-02, 0.0  &
+   orientation = 116.5650511765d, 90.0d, 180.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.PISTON_HG  &
+   mass = 51.3755434807  &
+   center_of_mass_marker = .Zv_Problem_6.PISTON_HG.cm  &
+   ixx = 3.0423954651  &
+   iyy = 3.0423954651  &
+   izz = 6.4219429351E-02  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .Zv_Problem_6.PISTON_HG.PISTON_HG  &
+   adams_id = 19  &
+   center_marker = .Zv_Problem_6.PISTON_HG.MARKER_19  &
+   angle_extent = 360.0  &
+   length = 0.8385254915  &
+   radius = 5.0E-02  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .Zv_Problem_6.PISTON_HG  &
+   color = CYAN  &
+   name_visibility = off
+!
+!-------------------------------- CYLINDER_NM ---------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.CYLINDER_NM  &
+   adams_id = 8  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.CYLINDER_NM
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYLINDER_NM.MARKER_20  &
+   adams_id = 20  &
+   location = 0.1, -0.8, 0.0  &
+   orientation = 71.5650511771d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYLINDER_NM.cm  &
+   adams_id = 50  &
+   location = 0.55, -0.95, 0.0  &
+   orientation = 251.5650511771d, 90.0d, 90.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYLINDER_NM.N  &
+   adams_id = 26  &
+   location = 0.1, -0.8, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.CYLINDER_NM.MARKER_40  &
+   adams_id = 40  &
+   location = 0.775, -1.025, 0.0  &
+   orientation = 71.5650511771d, 90.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.CYLINDER_NM  &
+   mass = 1103.4628539578  &
+   center_of_mass_marker = .Zv_Problem_6.CYLINDER_NM.cm  &
+   ixx = 194.9379202041  &
+   iyy = 194.9379202041  &
+   izz = 17.4571271848  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .Zv_Problem_6.CYLINDER_NM.CYLINDER_NM  &
+   adams_id = 20  &
+   center_marker = .Zv_Problem_6.CYLINDER_NM.MARKER_20  &
+   angle_extent = 360.0  &
+   length = 1.4230249471  &
+   radius = 0.1778781184  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .Zv_Problem_6.CYLINDER_NM  &
+   color = GREEN  &
+   name_visibility = off
+!
+!--------------------------------- PISTON_NM ----------------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+part create rigid_body name_and_position  &
+   part_name = .Zv_Problem_6.PISTON_NM  &
+   adams_id = 9  &
+   location = 0.0, 0.0, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.PISTON_NM
+!
+! ****** Markers for current part ******
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_NM.MARKER_21  &
+   adams_id = 21  &
+   location = 0.775, -1.025, 0.0  &
+   orientation = 71.5650511771d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_NM.cm  &
+   adams_id = 51  &
+   location = 1.45, -1.25, 0.0  &
+   orientation = 71.5650511771d, 90.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_NM.M  &
+   adams_id = 31  &
+   location = 1.9, -1.4, 0.0  &
+   orientation = 0.0d, 0.0d, 0.0d
+!
+marker create  &
+   marker_name = .Zv_Problem_6.PISTON_NM.MARKER_41  &
+   adams_id = 41  &
+   location = 0.775, -1.025, 0.0  &
+   orientation = 71.5650511771d, 90.0d, 0.0d
+!
+part create rigid_body mass_properties  &
+   part_name = .Zv_Problem_6.PISTON_NM  &
+   mass = 104.6246261362  &
+   center_of_mass_marker = .Zv_Problem_6.PISTON_NM.cm  &
+   ixx = 12.3548605396  &
+   iyy = 12.3548605396  &
+   izz = 0.188324327  &
+   ixy = 0.0  &
+   izx = 0.0  &
+   iyz = 0.0
+!
+! ****** Graphics for current part ******
+!
+geometry create shape cylinder  &
+   cylinder_name = .Zv_Problem_6.PISTON_NM.PISTON_NM  &
+   adams_id = 21  &
+   center_marker = .Zv_Problem_6.PISTON_NM.MARKER_21  &
+   angle_extent = 360.0  &
+   length = 1.1858541226  &
+   radius = 6.0E-02  &
+   side_count_for_body = 20  &
+   segment_count_for_ends = 20
+!
+part attributes  &
+   part_name = .Zv_Problem_6.PISTON_NM  &
+   color = CYAN  &
+   name_visibility = off
+!
+!----------------------------------- Joints -----------------------------------!
+!
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_1  &
+   adams_id = 1  &
+   i_marker_name = .Zv_Problem_6.PLA_ODAM.O  &
+   j_marker_name = .Zv_Problem_6.ground.MARKER_23
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_1  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_2  &
+   adams_id = 2  &
+   i_marker_name = .Zv_Problem_6.CYL_HG.H  &
+   j_marker_name = .Zv_Problem_6.ground.MARKER_25
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_2  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_3  &
+   adams_id = 3  &
+   i_marker_name = .Zv_Problem_6.CYLINDER_NM.N  &
+   j_marker_name = .Zv_Problem_6.ground.MARKER_27
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_3  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_4  &
+   adams_id = 4  &
+   i_marker_name = .Zv_Problem_6.PLA_GDC.G  &
+   j_marker_name = .Zv_Problem_6.PISTON_HG.G
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_4  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_5  &
+   adams_id = 5  &
+   i_marker_name = .Zv_Problem_6.PLA_ODAM.M  &
+   j_marker_name = .Zv_Problem_6.PISTON_NM.M
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_5  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_6  &
+   adams_id = 6  &
+   i_marker_name = .Zv_Problem_6.PLA_ODAM.D  &
+   j_marker_name = .Zv_Problem_6.PLA_GDC.D
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_6  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_7  &
+   adams_id = 7  &
+   i_marker_name = .Zv_Problem_6.PLA_ODAM.A  &
+   j_marker_name = .Zv_Problem_6.PLA_BKA.A
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_7  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_8  &
+   adams_id = 8  &
+   i_marker_name = .Zv_Problem_6.PLA_GDC.C  &
+   j_marker_name = .Zv_Problem_6.LIN_CB.C
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_8  &
+   name_visibility = off
+!
+constraint create joint revolute  &
+   joint_name = .Zv_Problem_6.JOINT_9  &
+   adams_id = 9  &
+   i_marker_name = .Zv_Problem_6.PLA_BKA.B  &
+   j_marker_name = .Zv_Problem_6.LIN_CB.B
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_9  &
+   name_visibility = off
+!
+constraint create joint translational  &
+   joint_name = .Zv_Problem_6.JOINT_10  &
+   adams_id = 10  &
+   i_marker_name = .Zv_Problem_6.CYLINDER_NM.MARKER_40  &
+   j_marker_name = .Zv_Problem_6.PISTON_NM.MARKER_41
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_10  &
+   name_visibility = off
+!
+constraint create joint translational  &
+   joint_name = .Zv_Problem_6.JOINT_11  &
+   adams_id = 11  &
+   i_marker_name = .Zv_Problem_6.PISTON_HG.MARKER_42  &
+   j_marker_name = .Zv_Problem_6.CYL_HG.MARKER_43
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.JOINT_11  &
+   name_visibility = off
+!
+!----------------------------------- Forces -----------------------------------!
+!
+!
+!----------------------------- Simulation Scripts -----------------------------!
+!
+!
+simulation script create  &
+   sim_script_name = .Zv_Problem_6.Last_Sim  &
+   commands =   &
+              "simulation single_run transient type=auto_select initial_static=no end_time=5.0 number_of_steps=500 model_name=.Zv_Problem_6"
+!
+!---------------------------------- Motions -----------------------------------!
+!
+!
+constraint create motion_generator  &
+   motion_name = .Zv_Problem_6.MOTION_1  &
+   adams_id = 1  &
+   type_of_freedom = translational  &
+   joint_name = .Zv_Problem_6.JOINT_11  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.MOTION_1  &
+   name_visibility = off
+!
+constraint create motion_generator  &
+   motion_name = .Zv_Problem_6.MOTION_2  &
+   adams_id = 2  &
+   type_of_freedom = translational  &
+   joint_name = .Zv_Problem_6.JOINT_10  &
+   function = ""
+!
+constraint attributes  &
+   constraint_name = .Zv_Problem_6.MOTION_2  &
+   name_visibility = off
+!
+!---------------------------------- Accgrav -----------------------------------!
+!
+!
+force create body gravitational  &
+   gravity_field_name = gravity  &
+   x_component_gravity = 0.0  &
+   y_component_gravity = -9.80665  &
+   z_component_gravity = 0.0
+!
+!----------------------------- Analysis settings ------------------------------!
+!
+!
+!---------------------------- Function definitions ----------------------------!
+!
+!
+constraint modify motion_generator  &
+   motion_name = .Zv_Problem_6.MOTION_1  &
+   function = "0+0.05*sin(1.5*time-0)"
+!
+constraint modify motion_generator  &
+   motion_name = .Zv_Problem_6.MOTION_2  &
+   function = "0+0.1*sin(1.5*time-0)"
+!
+!--------------------------- Expression definitions ---------------------------!
+!
+!
+defaults coordinate_system  &
+   default_coordinate_system = ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.O  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_1))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_2  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_2))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_3  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_4))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_4  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_3))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_5  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_5))
+!
+geometry modify shape plate  &
+   plate_name = .Zv_Problem_6.ground.PLATE_OHN  &
+   width = (5.0cm)  &
+   radius = (2.0cm)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_23  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_1))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_25  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_5))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_27  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_3))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_52  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_1))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.ground.MARKER_53  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_14))
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_6  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_1))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_7  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_7))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_8  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_9))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.MARKER_9  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_8))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape plate  &
+   plate_name = .Zv_Problem_6.PLA_ODAM.PLATE_ODAM  &
+   width = (5.0cm)  &
+   radius = (2.0cm)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.O  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_1))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.M  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_8))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.D  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_7))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_ODAM.A  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_9))  &
+   relative_to = .Zv_Problem_6.PLA_ODAM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_10  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_11))  &
+   relative_to = .Zv_Problem_6.PLA_GDC
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_11  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_7))  &
+   relative_to = .Zv_Problem_6.PLA_GDC
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_GDC.MARKER_12  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_12))  &
+   relative_to = .Zv_Problem_6.PLA_GDC
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape plate  &
+   plate_name = .Zv_Problem_6.PLA_GDC.PLATE_GDC  &
+   width = (5.0cm)  &
+   radius = (2.0cm)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_GDC.G  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_11))  &
+   relative_to = .Zv_Problem_6.PLA_GDC
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_GDC.D  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_7))  &
+   relative_to = .Zv_Problem_6.PLA_GDC
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_GDC.C  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_12))  &
+   relative_to = .Zv_Problem_6.PLA_GDC
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.LIN_CB.MARKER_13  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_12))  &
+   orientation =   &
+      (ORI_ALONG_AXIS(.Zv_Problem_6.ground.POINT_12, .Zv_Problem_6.ground.POINT_14, "X"))  &
+   relative_to = .Zv_Problem_6.LIN_CB
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.LIN_CB.Marker_B  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_14))  &
+   orientation =   &
+      (ORI_ALONG_AXIS(.Zv_Problem_6.ground.POINT_12, .Zv_Problem_6.ground.POINT_14, "X"))  &
+   relative_to = .Zv_Problem_6.LIN_CB
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape link  &
+   link_name = .Zv_Problem_6.LIN_CB.LINK_CB  &
+   width = (5.0E-02meter)  &
+   depth = (2.5E-02meter)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.LIN_CB.C  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_12))  &
+   relative_to = .Zv_Problem_6.LIN_CB
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.LIN_CB.B  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_14))  &
+   relative_to = .Zv_Problem_6.LIN_CB
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_BKA.MARKER_15  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_14))  &
+   relative_to = .Zv_Problem_6.PLA_BKA
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_BKA.K  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_16))  &
+   relative_to = .Zv_Problem_6.PLA_BKA
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_BKA.MARKER_17  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_9))  &
+   relative_to = .Zv_Problem_6.PLA_BKA
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape plate  &
+   plate_name = .Zv_Problem_6.PLA_BKA.PLATE_BKA  &
+   width = (5.0cm)  &
+   radius = (2.0cm)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_BKA.A  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_9))  &
+   relative_to = .Zv_Problem_6.PLA_BKA
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PLA_BKA.B  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_14))  &
+   relative_to = .Zv_Problem_6.PLA_BKA
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.CYL_HG.MARKER_18  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_5))  &
+   relative_to = .Zv_Problem_6.CYL_HG
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape cylinder  &
+   cylinder_name = .Zv_Problem_6.CYL_HG.CYLINDER_HG  &
+   length = (1.0062305899meter)  &
+   radius = (0.1257788237meter)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.CYL_HG.H  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_5))  &
+   relative_to = .Zv_Problem_6.CYL_HG
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape cylinder  &
+   cylinder_name = .Zv_Problem_6.PISTON_HG.PISTON_HG  &
+   length = (0.8385254915meter)  &
+   radius = (5.0cm)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PISTON_HG.G  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_11))  &
+   relative_to = .Zv_Problem_6.PISTON_HG
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.CYLINDER_NM.MARKER_20  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_3))  &
+   relative_to = .Zv_Problem_6.CYLINDER_NM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape cylinder  &
+   cylinder_name = .Zv_Problem_6.CYLINDER_NM.CYLINDER_NM  &
+   length = (1.4230249471meter)  &
+   radius = (0.1778781184meter)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.CYLINDER_NM.N  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_3))  &
+   relative_to = .Zv_Problem_6.CYLINDER_NM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+geometry modify shape cylinder  &
+   cylinder_name = .Zv_Problem_6.PISTON_NM.PISTON_NM  &
+   length = (1.1858541226meter)  &
+   radius = (6.0cm)
+!
+marker modify  &
+   marker_name = .Zv_Problem_6.PISTON_NM.M  &
+   location =   &
+      (LOC_RELATIVE_TO({0, 0, 0}, .Zv_Problem_6.ground.POINT_8))  &
+   relative_to = .Zv_Problem_6.PISTON_NM
+!
+defaults coordinate_system  &
+   default_coordinate_system = .Zv_Problem_6.ground
+!
+material modify  &
+   material_name = .Zv_Problem_6.steel  &
+   density = (7801.0(kg/meter**3))  &
+   youngs_modulus = (2.07E+11(Newton/meter**2))
+!
+model display  &
+   model_name = Zv_Problem_6

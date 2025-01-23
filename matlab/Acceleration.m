@@ -1,4 +1,4 @@
-function d2q = Acceleration(dq, q, t)
+function d2q = Acceleration(dq, q, t, P)
 % d2q = Acceleration(dq, q, t)
 % This function solves the acceleration problem for a multibody mechanism.
 % It calculates the second time derivatives (accelerations) of the absolute coordinates.
@@ -48,36 +48,15 @@ function d2q = Acceleration(dq, q, t)
 
     % Step 7 --- Revolute joint contributions to acceleration equations ---
     % Revolute joints eliminate two degrees of freedom, introducing two constraints per joint.
-% Revolute joints eliminate two degrees of freedom, introducing two constraints per joint.
-    
-    % Joint O-D (Frames 0, 1)
-    gam(1:2) = -Rot1 * sB01 * dfi1^2;
-    
-    % Joint D-A (Frames 1, 3)
-    gam(3:4) = Rot1 * sA13 * dfi1^2 - Rot3 * sB13 * dfi3^2;
-    
-    % Joint A-B (Frames 3, 4)
-    gam(5:6) = Rot3 * sA34 * dfi3^2 - Rot4 * sB34 * dfi4^2;
-    
-    % Joint B-C (Frames 4, 2)
-    gam(7:8) = Rot4 * sA42 * dfi4^2 - Rot2 * sB42 * dfi2^2;
-    
-    % Joint C-G (Frames 2, 8)
-    gam(9:10) = Rot2 * sA28 * dfi2^2 - Rot8 * sB28 * dfi8^2;
-    
-    % Joint C-D (Frames 2, 1)
-    gam(11:12) = Rot2 * sA21 * dfi2^2 - Rot1 * sB21 * dfi1^2;
-    
-    % Joint O-H (Frames 0, 7)
-    gam(13:14) = -Rot7 * sB07 * dfi7^2;
-    
-    % Joint O-N (Frames 0, 5)
-    gam(15:16) = -Rot5 * sB05 * dfi5^2;
-    
-    % Joint M-D (Frames 6, 1)
-    gam(17:18) = Rot6 * sA61 * dfi6^2 - Rot1 * sB61 * dfi1^2;
-
-
+    gam(1:2) = -Rot1 * sB01 * dfi1^2; % Joint O-D (Frames 0, 1): Accounts for rotational acceleration
+    gam(3:4) = -Rot7 * sB07 * dfi7^2; % Joint O-H (Frames 0, 7)
+    gam(5:6) = -Rot5 * sB05 * dfi5^2; % Joint O-N (Frames 0, 5)
+    gam(7:8) = Rot8 * sA82 * dfi8^2 - Rot2 * sB82 * dfi2^2; % Joint G-C (Frames 8, 2)
+    gam(9:10) = Rot6 * sA61 * dfi6^2 - Rot1 * sB61 * dfi1^2; % Joint M-D (Frames 6, 1)
+    gam(11:12) = Rot1 * sA12 * dfi1^2 - Rot2 * sB12 * dfi2^2; % Joint D-C (Frames 1, 2)
+    gam(13:14) = Rot2 * sA24 * dfi2^2 - Rot4 * sB24 * dfi4^2; % Joint C-B (Frames 2, 4)
+    gam(15:16) = Rot4 * sA43 * dfi4^2 - Rot3 * sB43 * dfi3^2; % Joint B-A (Frames 4, 3)
+    gam(17:18) = Rot1 * sA13 * dfi1^2 - Rot3 * sB13 * dfi3^2; % Joint D-A (Frames 1, 3)
 
     % Step 8 --- Translational joint contributions to acceleration equations ---
     % Translational joints eliminate two degrees of freedom (one for translation, one for orientation)
@@ -94,15 +73,29 @@ function d2q = Acceleration(dq, q, t)
     % Driving constraints specify the desired motion of pistons or cylinders over time
     % These constraints depend on time derivatives of predefined motion functions
 
+    if ismember(P, [1, 2, 3, 4, 5,6])
+        Dr_con1 = -0.225 * sin(1.5 * t);
+        Dr_con2 = -0.1125 * sin(1.5 * t);
+    elseif ismember(P, [7])
+        Dr_con1 = 0.225 * sin(1.5 * t);
+        Dr_con2 =  0.1125 * sin(1.5 * t);
+    elseif ismember(P, [ 8])
+        Dr_con1 =- 0.225 * sin(1.5 * t);
+        Dr_con2 =  0.1125 * sin(1.5 * t);
+    else
+        error('Invalid P');
+    end
+
+
     gam(23) = (Rot6 * u56)' * (2 * Om * (dr6 - dr5) * dfi6 + (r6 - r5) * dfi6^2 - Rot5 * sA56 * (dfi6 - dfi5)^2) ...
-              - (-0.225 * sin(1.5 * t)); % Driving constraint for piston/cylinder (6-5)
+              - (Dr_con1); % Driving constraint for piston/cylinder (6-5)
     % Computes the acceleration for piston/cylinder pair (6-5).
     % The left term calculates dynamic contributions (velocity and rotation effects).
     % The right term specifies the predefined sinusoidal driving acceleration.
 
 
     gam(24) = (Rot8 * u78)' * (2 * Om * (dr8 - dr7) * dfi8 + (r8 - r7) * dfi8^2 - Rot7 * sA78 * (dfi8 - dfi7)^2) ...
-              - (-0.1125 * sin(1.5 * t)); % Driving constraint for piston/cylinder (8-7)
+              - (Dr_con2); % Driving constraint for piston/cylinder (8-7)
 
     % Step 10 --- Calculate the Jacobian matrix ---
     % The Jacobian matrix defines how the constraint equations change with respect to positions (q).
