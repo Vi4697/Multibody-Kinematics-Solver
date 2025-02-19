@@ -1,4 +1,4 @@
-function [T, Q, DQ, D2Q] = sol_Problem_6()
+function [T, Q, DQ, D2Q] = sol_Problem()
 % Solves the kinematics problem (position, velocity, acceleration) for a four-bar mechanism.
 %
 % Outputs:
@@ -12,7 +12,7 @@ function [T, Q, DQ, D2Q] = sol_Problem_6()
 %%  Select the desired point for plotting
 % Each point in the mechanism has an index:
 % 1 = D, 2 = C, 3 = A, 4 = B, 5 = N(ground), 6 = M, 7 = H(ground), 8 = G
-P = 3; 
+P = 3;
 %%
 
 
@@ -44,7 +44,7 @@ for t = 0:dt:5
     q0 = q + dq * dt + 0.5 * d2q * dt^2;
 
     % Solve for the corrected position using the Newton-Raphson method
-    q = NewtonRaphson(q0, t, P); 
+    q = NewtonRaphson(q0, t, P);
 
     % Solve for velocities based on the updated positions
     dq = Velocity(q, t,P);
